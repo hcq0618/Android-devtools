@@ -25,9 +25,9 @@ class PermissionHandler(ContentHandler):
             if 'android:name' in attributes:
                 name = attributes['android:name']
                 if self.zip_dir_path:
-                    print self.zip_dir_path
+                    print(self.zip_dir_path)
                     self.zip_dir_path = None
-                print name
+                print(name)
 
 
 class AARParser:
@@ -87,19 +87,19 @@ class AARParser:
                 path = os.path.join(root_path, _dir)
                 if os.path.isdir(path):
                     shutil.rmtree(path)
-                    print path
+                    print(path)
                 elif '.aar' in path or '.zip' in path:
                     continue
                 else:
                     os.remove(path)
-                    print path
+                    print(path)
 
 
 aarParser = AARParser()
 
 aar_file_paths = []
 aarParser.get_aar_file_path(gradle_cache_path, aar_file_paths)
-print 'aar files count is %d' % len(aar_file_paths)
+print('aar files count is %d' % len(aar_file_paths))
 
 # AARParser.delete_unneeded_files(aar_file_paths)
 aarParser.parse(aar_file_paths)

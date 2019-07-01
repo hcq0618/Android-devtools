@@ -19,7 +19,7 @@ class CodeParser:
             if os.path.isdir(path):
                 if dir_key in _dir:
                     dir_paths.append(path)
-                    print path
+                    print(path)
                 else:
                     self.get_dir_paths(path, dir_paths, dir_key)
 
@@ -54,14 +54,14 @@ for project_path in project_paths:
     java_file_paths = []
     for src_path in src_paths:
         codeParser.get_file_paths(src_path, java_file_paths, '.java')
-    print '\njava files count is %d in %s' % (len(java_file_paths), project_path)
+    print('\njava files count is %d in %s' % (len(java_file_paths), project_path))
 
     # 计算一个工程中所有src目录中的java代码行数
     java_code_lines = 0
     for java_file_path in java_file_paths:
         code_lines = CodeParser.get_code_lines(java_file_path)
         java_code_lines += code_lines
-    print 'java code lines count is %d in %s \n' % (java_code_lines, project_path)
+    print('java code lines count is %d in %s \n' % (java_code_lines, project_path))
     total_java_code_lines += java_code_lines
 
     # 获取一个工程中所有模块的res目录列表
@@ -73,21 +73,21 @@ for project_path in project_paths:
     xml_file_paths = []
     for res_path in res_paths:
         codeParser.get_file_paths(res_path, xml_file_paths, '.xml')
-    print '\nxml files count is %d in %s' % (len(xml_file_paths), project_path)
+    print('\nxml files count is %d in %s' % (len(xml_file_paths), project_path))
 
     # 计算一个工程中所有res目录中的xml代码行数
     xml_code_lines = 0
     for xml_file_path in xml_file_paths:
         code_lines = CodeParser.get_code_lines(xml_file_path)
         xml_code_lines += code_lines
-    print 'xml code lines count is %d in %s \n' % (xml_code_lines, project_path)
+    print('xml code lines count is %d in %s \n' % (xml_code_lines, project_path))
     total_xml_code_lines += xml_code_lines
 
     project_code_lines = java_code_lines + xml_code_lines
     total_code_lines += project_code_lines
-    print 'code lines count is %d in %s \n' % (project_code_lines, project_path)
+    print('code lines count is %d in %s \n' % (project_code_lines, project_path))
 
-print 'total java code lines count is %d \n' \
+print('total java code lines count is %d \n' \
       'total xml code lines count is %d \n' \
       'total code lines count is %d' % \
-      (total_java_code_lines, total_xml_code_lines, total_code_lines)
+      (total_java_code_lines, total_xml_code_lines, total_code_lines))
